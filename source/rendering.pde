@@ -1,64 +1,59 @@
-void fade(int speed) {
-  int prevTime;
-  float currentTime = time;
+void fade(float speed) {
+  float prevTime = time;
   float currentSpeed;
-  boolean switchingLevels;
   if (time < 255) {
-    currentSpeed = map(currentTime, 0, 255, speed * 3, speed);
+    currentSpeed = map(time, 0, 255, speed * 3, speed);
   } else if (time > 255) {
-    currentSpeed = map(currentTime, 255, 510, speed, speed * 3);
+    currentSpeed = map(time, 255, 510, speed, speed * 3);
   } else {
     currentSpeed = speed;
   }
-  prevTime = int(currentTime);
   if (level.startsWith("level")) {
-    if ((currentTime + currentSpeed) > 255 && currentTime < 255) {
-      currentTime = 255;
+    if ((time + currentSpeed) > 255 && time < 255) {
+      time = 255;
     }
-    if (!(!(levelClears.get(int(level.substring(5)) - 1) || levelDeaths.get(int(level.substring(5)) - 1)) && currentTime == 255 && levelNameShown)) {
-      currentTime = min(510, currentTime + currentSpeed);
+    if (!(!(levelClears.get(int(level.substring(5)) - 1) || levelDeaths.get(int(level.substring(5)) - 1)) && time == 255 && levelNameShown)) {
+      time = int(min(510, time + currentSpeed));
     }
-  } else if (currentTime != 255 || level != targetLevel) {
-    if ((currentTime + currentSpeed) > 255 && currentTime < 255) {
-      currentTime = 255;
+  } else if (time != 255 || level != targetLevel) {
+    if ((time + currentSpeed) > 255 && time < 255) {
+      time = 255;
     } else {
-      currentTime = min(510, currentTime + currentSpeed);
+      time = int(min(510, time + currentSpeed));
     }
   }
-  time = round(currentTime);
-  if (time <= 255 && alpha < 255) {
-    alpha = round(min(255, alpha + currentSpeed));
-  } else if (time > 255) {
-    alpha = round(max(0, alpha - currentSpeed));
-  }
-  if (prevTime <= 510 && time >= 510) {
-    fadeComplete = true;
+  if (time <= 255) {
+    alpha = int(map(time, 0, 255, 0, 255));
   } else {
-    fadeComplete = false;
+    alpha = int(map(time, 255, 510, 255, 0));
   }
+  fadeComplete = (prevTime < 510 && time >= 510);
   if (time >= 510) {
-    if (level == targetLevel) {
-      switchingLevels = false;
-    } else {
-      switchingLevels = true;
-    }
+    boolean switchingLevels = (level != targetLevel);
     time = 0;
     alpha = 0;
     playerX = halfBlockSize;
     playerY = bottom;
-    if (level.startsWith("level") && !switchingLevels && !levelNameShown) {
-      levelNameShown = true;
-    }
-    if (level.startsWith("level") && (levelClears.get(int(level.substring(5)) - 1) || levelDeaths.get(int(level.substring(5)) - 1)) && levelNameShown) {
-      levelNameShown = false;
+    if (level.startsWith("level")) {
+      if (!switchingLevels && !levelNameShown) {
+        levelNameShown = true;
+      }
+      if ((levelClears.get(int(level.substring(5)) - 1) || levelDeaths.get(int(level.substring(5)) - 1)) && levelNameShown) {
+        levelNameShown = false;
+      }
     }
     level = targetLevel;
   }
 }
 void backdrop() {
   background(skyColour);
-  targetCamX = -playerX + blockSize * 48;
-  targetCamY = -playerY + blockSize * 90;
+  if (level.startsWith("level")) {
+    targetCamX = -playerX + blockSize * 48;
+    targetCamY = -playerY + blockSize * 90;
+  } else {
+    targetCamX = -halfBlockSize + blockSize * 48;
+    targetCamY = -bottom + blockSize * 90;
+  }
   for (Mountain mount : mountains) {
     mount.display(targetCamX, targetCamY);
   }

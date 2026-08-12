@@ -142,6 +142,7 @@ void themeBlurs(int themeIndex) {
 void setup() {
   time = 0;
   alpha = 0;
+  levelCount = 42;
   achRows = 3;
   achCols = 4;
   benchNineLight = createFont(getParentPath(1) + "data/fonts/BenchNine-Light.ttf", 32);
@@ -1320,7 +1321,7 @@ void setup() {
   level42Sprites.add(level42DeathPlatform11);
   level42Sprites.add(level42DeathPlatform12);
   level42Sprites.add(level42DeathPlatform13);
-  for (int i = 0; i < 42; i++) {
+  for (int i = 0; i < levelCount; i++) {
     levelClears.add(false);
     levelDeaths.add(false);
   }

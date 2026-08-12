@@ -1,5 +1,5 @@
 class Mountain {
-  int transitionFrames = 60;
+  int transitionFrames = 120;
   float yBase;
   float parallaxFactorX;
   float parallaxFactorY;
@@ -54,11 +54,13 @@ class Mountain {
     }
     if (this.transitionProgress < 1) {
       this.transitionProgress = min(1, transitionProgress + (1.0 / transitionFrames));
+      float t = transitionProgress;
+      float easedProgress = t < 0.5 ? 16 * t * t * t * t * t : 1 - pow(-2 * t + 2, 5) / 2;
       for (int i = 0; i < this.currentPoints.size(); i++) {
         PVector original = this.originalPoints.get(i);
         PVector target = this.targetPoints.get(i);
         PVector current = this.currentPoints.get(i);
-        current.set(map(this.transitionProgress, 0, 1, original.x, target.x), map(this.transitionProgress, 0, 1, original.y, target.y));
+        current.set(map(easedProgress, 0, 1, original.x, target.x), map(easedProgress, 0, 1, original.y, target.y));
       }
     }
   }

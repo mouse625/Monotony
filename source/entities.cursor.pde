@@ -46,7 +46,7 @@ class Cursor {
   }
   void updateState() {
     this.hovering = false;
-    if (level == "mainMenu") {
+    if (level == "menu") {
       for (Button btn : menuButtons) {
         if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
@@ -67,7 +67,7 @@ class Cursor {
           break;
         }
       }
-    } else if (level == "settingsMenu") {
+    } else if (level == "settings") {
       for (Button btn : settingsButtons) {
         if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;

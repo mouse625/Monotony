@@ -11,6 +11,6 @@ void intro() {
   text("A Minimalist Platformer", 0, subtitleHeight, wrapWidth, wrapHeight);
   pop();
   if (time == 255) {
-    targetLevel = "mainMenu";
+    targetLevel = "menu";
   }
 }

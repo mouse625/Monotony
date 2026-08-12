@@ -10,6 +10,6 @@ void end() {
   text("This might not be the end. You might still have some achievements to collect. If not, goodbye.", 0, subtitleHeight, wrapWidth, wrapHeight);
   pop();
   if (time == 255) {
-    targetLevel = "mainMenu";
+    targetLevel = "menu";
   }
 }

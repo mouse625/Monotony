@@ -1,13 +1,13 @@
 void keyPressed() {
   if (keyCode == ESC) {
     key = 0;
-    if (level.equals("levelSelect") || level.equals("achievements") || level.equals("settingsMenu") || level.equals("tutorial")) {
-      targetLevel = "mainMenu";
+    if (level.equals("levelSelect") || level.equals("achievements") || level.equals("settings") || level.equals("tutorial")) {
+      targetLevel = "menu";
       if (buttonClickCheckbox.getState() == "checked") {
         buttonClick.play();
       }
-    } else if (level.equals("themeSettings") || level.equals("graphicsSettings") || level.equals("audioSettings") || level.equals("aboutScreen")) {
-      targetLevel = "settingsMenu";
+    } else if (level.equals("themeSettings") || level.equals("graphicsSettings") || level.equals("audioSettings") || level.equals("about")) {
+      targetLevel = "settings";
       if (buttonClickCheckbox.getState() == "checked") {
         buttonClick.play();
       }
@@ -40,7 +40,7 @@ void keyReleased() {
 }
 void mousePressed() {
   if (alpha == 255) {
-    if (level == "mainMenu") {
+    if (level == "menu") {
       if (hoverCheck(startButton)) {
         targetLevel = "level1";
         if (buttonClickCheckbox.getState() == "checked") {
@@ -67,7 +67,7 @@ void mousePressed() {
           buttonClick.play();
         }
       } else if (hoverCheck(settingsButton)) {
-        targetLevel = "settingsMenu";
+        targetLevel = "settings";
         if (buttonClickCheckbox.getState() == "checked") {
           buttonClick.play();
         }
@@ -291,7 +291,7 @@ void mousePressed() {
       if (randomClickCheckbox.getState() == "checked") {
         randomClick.play();
       }
-    } else if (level == "settingsMenu") {
+    } else if (level == "settings") {
       if (hoverCheck(themeButton)) {
         targetLevel = "themeSettings";
         if (buttonClickCheckbox.getState() == "checked") {
@@ -308,7 +308,7 @@ void mousePressed() {
           buttonClick.play();
         }
       } else if (hoverCheck(aboutButton)) {
-        targetLevel = "aboutScreen";
+        targetLevel = "about";
         if (buttonClickCheckbox.getState() == "checked") {
           buttonClick.play();
         }
@@ -371,7 +371,7 @@ void mousePressed() {
       if (randomClickCheckbox.getState() == "checked") {
         randomClick.play();
       }
-    } else if (level == "aboutScreen") {
+    } else if (level == "about") {
       if (randomClickCheckbox.getState() == "checked") {
         randomClick.play();
       }

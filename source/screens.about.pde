@@ -1,7 +1,7 @@
-void aboutScreen() {
+void about() {
   fade(1);
   if (targetLevel == "buffer") {
-    targetLevel = "aboutScreen";
+    targetLevel = "about";
   }
   fill(playerColour, alpha);
   tint(playerColour, alpha);
@@ -47,7 +47,7 @@ void aboutScreen() {
     image(stardance, centreX, titleHeight);
     text("Stardance", centreX, titleHeight);
     if (time == 255) {
-      targetLevel = "settingsMenu";
+      targetLevel = "settings";
     }
     if (fadeComplete) {
       about1Shown = false;
@@ -59,7 +59,7 @@ void aboutScreen() {
       about7Shown = false;
     }
   }
-  if (time == 255 && targetLevel != "settingsMenu") {
+  if (time == 255 && targetLevel != "settings") {
     targetLevel = "buffer";
   }
 }
