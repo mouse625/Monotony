@@ -23,7 +23,7 @@ class Achievement extends Sprite {
   String achSubtitle;
   boolean achL;
   Achievement(int row, int col, String t, String st, boolean l) {
-    this(-7.3 + row * blockSize * 18.25, 2.225 + col * blockSize * 5.25, t, st, l);
+    this(centreX + (col - (achCols + 1) / 2.0) * blockSize * 19.0, centreY + (row - (achRows + 1) / 2.0) * blockSize * 6.0, t, st, l);
   }
   Achievement(float x, float y, String t, String st, boolean l) {
     this(x, y, blockSize * 18, blockSize * 5, t, st, l);
@@ -40,8 +40,8 @@ class Achievement extends Sprite {
   Achievement(float x, float y, float w, float h, float r, String t, String st, float ts, float sts, PFont f, boolean l) {
     super(x, y, w, h, r, color(0), false);
     updateNextSection();
-    this.achRow = (int)nextSection.x;
-    this.achCol = (int)nextSection.y;
+    this.achRow = int(nextSection.x);
+    this.achCol = int(nextSection.y);
     this.achX = x;
     this.achY = y;
     this.achW = w;
@@ -79,7 +79,7 @@ class Achievement extends Sprite {
   }
   void displayLocked() {
     displayImg = sections[this.achRow][this.achCol].copy();
-    displayImg.resize((int)this.achW, (int)this.achH);
+    displayImg.resize(int(this.achW), int(this.achH));
     tint(255, alpha);
     image(displayImg, this.achX, this.achY);
     noFill();

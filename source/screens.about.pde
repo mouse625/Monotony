@@ -7,50 +7,59 @@ void aboutScreen() {
   tint(playerColour, alpha);
   textFont(benchNineLight, subtitleSize);
   if (!about1Shown) {
-    text("This project was initiated by", centerX, centerY);
+    text("This project was initiated by", centreX, titleHeight);
     if (fadeComplete) {
       about1Shown = true;
     }
   } else if (!about2Shown) {
-    text("a computer science assessment", centerX, centerY);
+    text("a computer science assessment", centreX, titleHeight);
     if (fadeComplete) {
       about2Shown = true;
     }
   } else if (!about3Shown) {
-    text("and developed through", centerX, centerY);
+    text("and developed through", centreX, titleHeight);
     if (fadeComplete) {
       about3Shown = true;
     }
   } else if (!about4Shown) {
-    text("Hack Club's", centerX, centerY);
+    image(hackclub, centreX, titleHeight);
+    text("Hack Club", centreX, titleHeight);
     if (fadeComplete) {
       about4Shown = true;
     }
   } else if (!about5Shown) {
-    text("Summer of Making.", centerX, centerY);
+    text("in the events called", centreX, titleHeight);
     if (fadeComplete) {
       about5Shown = true;
     }
   } else if (!about6Shown) {
-    image(hcLogo, centerX, centerY);
+    image(summer, centreX, titleHeight);
+    text("Summer of Making", centreX, titleHeight);
     if (fadeComplete) {
       about6Shown = true;
     }
+  } else if (!about7Shown) {
+    text("and", centreX, titleHeight);
+    if (fadeComplete) {
+      about7Shown = true;
+    }
   } else {
-    image(somLogo, centerX, centerY);
+    image(stardance, centreX, titleHeight);
+    text("Stardance", centreX, titleHeight);
+    if (time == 255) {
+      targetLevel = "settingsMenu";
+    }
     if (fadeComplete) {
       about1Shown = false;
       about2Shown = false;
       about3Shown = false;
       about4Shown = false;
       about5Shown = false;
+      about6Shown = false;
+      about7Shown = false;
     }
   }
-  if (time == 255) {
-    if (about6Shown) {
-      targetLevel = "settingsMenu";
-    } else {
-      targetLevel = "buffer";
-    }
+  if (time == 255 && targetLevel != "settingsMenu") {
+    targetLevel = "buffer";
   }
 }

@@ -258,21 +258,28 @@ void levelB(LevelClearArea levelNClearArea, ArrayList<Sprite> levelNSprites, Arr
     }
     for (Platform plat : levelNPlatforms) {
       if (collisionCheck(plat)) {
-        if (ySpeed > 0) {
-          playerY = plat.spriteY - plat.spriteH / 2 - 10;
-          onGround = true;
+        float overlapX = (halfBlockSize + plat.spriteW / 2) - abs(playerX - plat.spriteX);
+        float overlapY = (halfBlockSize + plat.spriteH / 2) - abs(playerY - plat.spriteY);
+        if (overlapX < overlapY) {
+          if (playerX < plat.spriteX) {
+            playerX = plat.spriteX - plat.spriteW / 2 - halfBlockSize;
+          } else {
+            playerX = plat.spriteX + plat.spriteW / 2 + halfBlockSize;
+          }
+          xSpeed = 0;
+        } else {
+          if (playerY < plat.spriteY) {
+            playerY = plat.spriteY - plat.spriteH / 2 - halfBlockSize;
+            onGround = true;
+          } else {
+            playerY = plat.spriteY + plat.spriteH / 2 + halfBlockSize;
+          }
           ySpeed = 0;
-        } else if (ySpeed < 0) {
-          playerY = plat.spriteY + plat.spriteH / 2 + 10;
-          ySpeed = 0;
-        }
-        if (playerX + 10 < plat.spriteX - plat.spriteW || playerX - 10 > plat.spriteX + plat.spriteW) {
-          onGround = false;
         }
       }
-    }
-    for (Sprite sprite : levelNSprites) {
-      sprite.display();
+      for (Sprite sprite : levelNSprites) {
+        sprite.display();
+      }
     }
   }
 }
@@ -390,17 +397,27 @@ void levelD(LevelClearArea levelNClearArea, ArrayList<Sprite> levelNSprites, Arr
     }
     for (Platform plat : levelNPlatforms) {
       if (collisionCheck(plat)) {
-        if (ySpeed > 0) {
-          playerY = plat.spriteY - plat.spriteH / 2 - 10;
-          onGround = true;
-          ySpeed = 0;
-        } else if (ySpeed < 0) {
-          playerY = plat.spriteY + plat.spriteH / 2 + 10;
+        float overlapX = (halfBlockSize + plat.spriteW / 2) - abs(playerX - plat.spriteX);
+        float overlapY = (halfBlockSize + plat.spriteH / 2) - abs(playerY - plat.spriteY);
+        if (overlapX < overlapY) {
+          if (playerX < plat.spriteX) {
+            playerX = plat.spriteX - plat.spriteW / 2 - halfBlockSize;
+          } else {
+            playerX = plat.spriteX + plat.spriteW / 2 + halfBlockSize;
+          }
+          xSpeed = 0;
+        } else {
+          if (playerY < plat.spriteY) {
+            playerY = plat.spriteY - plat.spriteH / 2 - halfBlockSize;
+            onGround = true;
+          } else {
+            playerY = plat.spriteY + plat.spriteH / 2 + halfBlockSize;
+          }
           ySpeed = 0;
         }
-        if (playerX + 10 < plat.spriteX - plat.spriteW || playerX - 10 > plat.spriteX + plat.spriteW) {
-          onGround = false;
-        }
+      }
+      for (Sprite sprite : levelNSprites) {
+        sprite.display();
       }
     }
     for (DeathPlatform deathPlat : levelNDeathPlatforms) {

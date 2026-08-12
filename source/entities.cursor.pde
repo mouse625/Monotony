@@ -48,42 +48,42 @@ class Cursor {
     this.hovering = false;
     if (level == "mainMenu") {
       for (Button btn : menuButtons) {
-        if (hoverCheck(btn)) {
+        if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
           break;
         }
       }
     } else if (level == "levelSelect") {
       for (Button btn : levelsButtons) {
-        if (hoverCheck(btn)) {
+        if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
           break;
         }
       }
     } else if (level == "achievements") {
       for (Button btn : achievementsButtons) {
-        if (hoverCheck(btn)) {
+        if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
           break;
         }
       }
     } else if (level == "settingsMenu") {
       for (Button btn : settingsButtons) {
-        if (hoverCheck(btn)) {
+        if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
           break;
         }
       }
     } else if (level == "themeSettings") {
       for (Button btn : themeButtons) {
-        if (hoverCheck(btn)) {
+        if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
           break;
         }
       }
     } else if (level == "graphicsSettings") {
       for (Button btn : graphicsButtons) {
-        if (hoverCheck(btn)) {
+        if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
           break;
         }
@@ -96,7 +96,7 @@ class Cursor {
       }
     } else if (level == "audioSettings") {
       for (Button btn : audioButtons) {
-        if (hoverCheck(btn)) {
+        if (hoverCheck(btn) && !btn.btnL) {
           this.hovering = true;
           break;
         }
@@ -213,7 +213,7 @@ class Cursor {
       this.hourglassVerts[0].x = this.verts[0].x - this.trailCursorCXD;
       this.hourglassVerts[3].x = this.verts[3].x + this.trailCursorCXD;
     }
-    fill(255, this.headCursorCFA);
+    noFill();
     stroke(255, this.headCursorCSA);
     beginShape();
     for (PVector v : this.hourglassVerts) {
@@ -230,7 +230,7 @@ class Cursor {
       this.updateCommonProperties();
       this.trailCursorS = 0.1;
       noFill();
-      stroke(255, this.trailCursorCSA);
+      stroke(255);
       this.trailCursor.display();
       pushMatrix();
       translate(this.trailCursorX, this.trailCursorY);

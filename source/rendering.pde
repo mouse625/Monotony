@@ -10,7 +10,7 @@ void fade(int speed) {
   } else {
     currentSpeed = speed;
   }
-  prevTime = (int)currentTime;
+  prevTime = int(currentTime);
   if (level.startsWith("level")) {
     if ((currentTime + currentSpeed) > 255 && currentTime < 255) {
       currentTime = 255;
@@ -56,15 +56,9 @@ void fade(int speed) {
   }
 }
 void backdrop() {
-  beginShape();
-  fill(skyColour);
-  vertex(0, 0);
-  vertex(displayWidth, 0);
-  vertex(displayWidth, displayHeight);
-  vertex(0, displayHeight);
-  endShape();
-  targetCamX = -playerX + displayWidth / 2;
-  targetCamY = -playerY + displayHeight * 1.25;
+  background(skyColour);
+  targetCamX = -playerX + blockSize * 48;
+  targetCamY = -playerY + blockSize * 90;
   for (Mountain mount : mountains) {
     mount.display(targetCamX, targetCamY);
   }
@@ -74,9 +68,12 @@ void levelTitle() {
     fade(1);
     fill(255, alpha);
     textFont(benchNineLight, titleSize);
-    text(levelTitles.get(int(level.substring(5)) - 1), centerX, titleHeight);
+    text(levelTitles.get(int(level.substring(5)) - 1), centreX, titleHeight);
+    push();
+    rectMode(CORNER);
+    textAlign(CENTER, TOP);
     textFont(benchNineLight, subtitleSize);
-    text(levelDescriptions.get(int(level.substring(5)) - 1), centerX, subtitleHeight, displayWidth, centerY);
+    text(levelDescriptions.get(int(level.substring(5)) - 1), 0, subtitleHeight, wrapWidth, wrapHeight);
+    pop();
   }
 }
-

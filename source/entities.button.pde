@@ -174,11 +174,11 @@ class Button extends Sprite {
     if (!sectionUpdated) {
       sectionUpdated = true;
       updateNextSection();
-      this.btnRow = (int)nextSection.x;
-      this.btnCol = (int)nextSection.y;
+      this.btnRow = int(nextSection.x);
+      this.btnCol = int(nextSection.y);
     }
     displayImg = sections[this.btnRow][this.btnCol].copy();
-    displayImg.resize((int)this.currentW, (int)this.currentH);
+    displayImg.resize(int(this.currentW), int(this.currentH));
     tint(255, alpha);
     image(displayImg, this.btnX, this.btnY);
     noFill();

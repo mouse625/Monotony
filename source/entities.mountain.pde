@@ -30,15 +30,15 @@ class Mountain {
   void generateMountainProfile() {
     noiseSeed((long)this.noiseSeed * getLevel(level));
     this.targetPoints.clear();
-    for (int xPos = -displayWidth / 2; xPos < displayWidth * 1.5; xPos += blockSize / 10) {
+    for (int xPos = int(blockSize * -48); xPos < blockSize * 144; xPos += blockSize / 10) {
       float nxPos = xPos * 0.003 + this.noiseSeed;
-      float wave = xPos * (TWO_PI / (40 * displayWidth));
+      float wave = xPos * (TWO_PI / (blockSize * 3840));
       float waveEffect = map(wave, -1, 1, 0.3, 1.0);
       float elevation = noise(nxPos) * (this.peakVariation);
       float ridges = noise(nxPos * 2.5) * (this.peakVariation * 0.4);
       float detail = noise(nxPos * 10) * (this.peakVariation * 0.15);
       float yPos = (this.yBase - (elevation + ridges) * waveEffect + detail);
-      PVector point = new PVector(xPos, constrain(yPos, 0, displayHeight));
+      PVector point = new PVector(xPos, constrain(yPos, blockSize * -25, blockSize * 80));
       this.targetPoints.add(point);
     }
   }
@@ -50,6 +50,7 @@ class Mountain {
       }
       generateMountainProfile();
       this.transitionProgress = 0;
+      this.currentLevel = level;
     }
     if (this.transitionProgress < 1) {
       this.transitionProgress = min(1, transitionProgress + (1.0 / transitionFrames));
@@ -67,18 +68,18 @@ class Mountain {
     this.updateProfileIfNeeded();
     fill(this.rangeColor);
     beginShape();
-    vertex(0, displayHeight);
+    vertex(blockSize * -96, blockSize * 64);
     for (PVector p : this.currentPoints) {
       vertex(p.x + currentCameraX * this.parallaxFactorX, p.y + currentCameraY * this.parallaxFactorY);
     }
-    vertex(displayWidth * 1.2, displayHeight);
+    vertex(blockSize * 192, blockSize * 64);
     endShape(CLOSE);
     stroke(lerpColor(this.rangeColor, color(255), 0.4));
-    strokeWeight(2.5);
+    strokeWeight(blockSize * 1 / 6);
     noFill();
     beginShape();
     for (PVector point : currentPoints) {
-      curveVertex(point.x + currentCameraX * this.parallaxFactorX * 0.7, point.y + currentCameraY * this.parallaxFactorY * 0.7 - 20);
+      curveVertex(point.x + currentCameraX * this.parallaxFactorX * 0.7, point.y + currentCameraY * this.parallaxFactorY * 0.7 - blockSize * 4 / 3);
     }
     endShape();
     noStroke();
