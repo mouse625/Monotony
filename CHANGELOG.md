@@ -1,6 +1,30 @@
 # Changelog
 
-## v1.0.1
+## v2.1.0
+
+### Added
+
+- Mass anchoring to various positional checkpoints to fully support various aspect ratios
+- Dynamic achievement positioning
+- More credits images (with the old ones being updated too) as part of Stardance
+
+### Updated
+
+- The CHANGELOG.md file (this one)
+- Improved cursor transitions between display states
+- Quadratic instead of linear lerping for easing during transitions
+- Removal of the back button (functionality replaced by the escape key)
+- Improved fade function for a greater range of transition speeds
+- Dyanmic title and subtitle heights for appropriate centring
+- Revamped how levels were drew in preparation of upcoming features (stopped exponential growth of the number of lines)
+- Updated the tutorial
+
+### Fixed
+
+- Button rendering bugs (didn't appear in previous versions but might as well have fixed the root cause)
+- Added consistency in structure, syntax and naming conventions
+
+## v2.0.0
 
 ### Added
 

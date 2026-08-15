@@ -55,7 +55,7 @@ class Mountain {
     if (this.transitionProgress < 1) {
       this.transitionProgress = min(1, transitionProgress + (1.0 / transitionFrames));
       float t = transitionProgress;
-      float easedProgress = t < 0.5 ? 16 * t * t * t * t * t : 1 - pow(-2 * t + 2, 5) / 2;
+      float easedProgress = t < 0.5 ? 2 * pow(t, 2) : 1 - pow(-2 * t + 2, 2) / 2;
       for (int i = 0; i < this.currentPoints.size(); i++) {
         PVector original = this.originalPoints.get(i);
         PVector target = this.targetPoints.get(i);

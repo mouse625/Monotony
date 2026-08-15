@@ -1,6 +1,6 @@
 String getParentPath(int gen) {
   int remainingGen = gen;
-  File sketchDir = new File(sketchPath(""));
+  File sketchDir = new File(sketchPath());
   while (remainingGen > 0) {
     sketchDir = sketchDir.getParentFile();
     remainingGen--;
@@ -116,11 +116,6 @@ void setColours(boolean initialised) {
       mountain2.rangeColor = mountain2Colour;
       mountain3.rangeColor = mountain3Colour;
       mountain4.rangeColor = mountain4Colour;
-      for (int row = 0; row < 5; row++) {
-        for (int col = 0; col < 8; col++) {
-          sections[row][col] = loadImage(getParentPath(1) + "data/images/sections/" + theme + File.separator + theme + "Section[" + row + "][" + col + "].png");
-        }
-      }
     }
     previousTheme = theme;
   }

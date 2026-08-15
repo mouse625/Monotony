@@ -97,10 +97,6 @@ Made with Processing 4.4, an open-source programming language forked from Java. 
     <td>Standalone</td>
   </tr>
   <tr>
-    <td>Better anti-aliasing</td>
-    <td>Worse anti-aliasing</td>
-  </tr>
-  <tr>
     <td>Editable</td>
     <td>Version-locked</td>
   </tr>
