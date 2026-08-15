@@ -59,3 +59,5 @@
 ### Added
 
 - Initial release
+
+---

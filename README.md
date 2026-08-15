@@ -133,5 +133,3 @@ Do you have any suggestions, fixes, or extensions? If so, you can submit a pull 
 This project uses the MIT License stating that the project is open source and free for anyone to use or develop. For more info, navigate to the [LICENSE.md](https://github.com/MouseMouse625/Monotony/blob/main/LICENSE.md) file.
 
 ---
-
-Copyright © 2025 Monotony
