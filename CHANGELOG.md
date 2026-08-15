@@ -22,6 +22,7 @@
 ### Fixed
 
 - Button rendering bugs (didn't appear in previous versions but might as well have fixed the root cause)
+- Fixed how collisions with the sides of platforms functioned
 - Added consistency in structure, syntax and naming conventions
 
 ## v2.0.0
