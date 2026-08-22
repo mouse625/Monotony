@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.1.1
+
+### Updated
+
+- The CHANGELOG.md file (this one)
+
+### Fixed
+
+- Fixed the disabling of horizontal movement when colliding with the side of a platform
+- Fixed the bug (present for a year) where colliding with the side of a platform would teleport you to the top
+- Fixed some redundancies in the achievements and button classes (unused sections)
+
 ## v2.1.0
 
 ### Added

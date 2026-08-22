@@ -63,6 +63,8 @@ void mousePressed() {
         }
       } else if (hoverCheck(tutorialButton)) {
         targetLevel = "tutorial";
+        playerX = centreX;
+        playerY = titleHeight;
         if (buttonClickCheckbox.getState() == "checked") {
           buttonClick.play();
         }

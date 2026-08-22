@@ -32,6 +32,8 @@ float subtitleSize;
 float subtitleHeight;
 float playerX;
 float playerY;
+float prevX;
+float prevY;
 float xSpeed;
 float ySpeed;
 float gravity;

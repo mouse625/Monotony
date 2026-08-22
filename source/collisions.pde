@@ -1,13 +1,13 @@
 boolean collisionCheck(Sprite sprite) {
-  float leftSide = sprite.spriteX - sprite.spriteW / 2;
-  float rightSide = sprite.spriteX + sprite.spriteW / 2;
-  float topSide = sprite.spriteY - sprite.spriteH / 2;
-  float bottomSide = sprite.spriteY + sprite.spriteH / 2;
-  if ((playerX >= leftSide && playerX <= rightSide && playerY >= topSide && playerY <= bottomSide) || (playerX - halfBlockSize >= leftSide && playerX - halfBlockSize <= rightSide && playerY >= topSide && playerY <= bottomSide) || (playerX + halfBlockSize >= leftSide && playerX + halfBlockSize <= rightSide && playerY >= topSide && playerY <= bottomSide) || (playerX >= leftSide && playerX <= rightSide && playerY - halfBlockSize >= topSide && playerY - halfBlockSize <= bottomSide) || (playerX >= leftSide && playerX <= rightSide && playerY + halfBlockSize>= topSide && playerY + halfBlockSize <= bottomSide) || (playerX - halfBlockSize >= leftSide && playerX - halfBlockSize <= rightSide && playerY - halfBlockSize >= topSide && playerY - halfBlockSize <= bottomSide) || (playerX - halfBlockSize >= leftSide && playerX - halfBlockSize <= rightSide && playerY + halfBlockSize >= topSide && playerY + halfBlockSize <= bottomSide) || (playerX + halfBlockSize >= leftSide && playerX + halfBlockSize <= rightSide && playerY - halfBlockSize >= topSide && playerY - halfBlockSize <= bottomSide) || (playerX + halfBlockSize >= leftSide && playerX + halfBlockSize <= rightSide && playerY + halfBlockSize >= topSide && playerY + halfBlockSize <= bottomSide)) {
-    return true;
-  } else {
-    return false;
-  }
+  float playerLeft = playerX - halfBlockSize;
+  float playerRight = playerX + halfBlockSize;
+  float playerTop = playerY - halfBlockSize;
+  float playerBottom = playerY + halfBlockSize;
+  float spriteLeft = sprite.spriteX - sprite.spriteW / 2;
+  float spriteRight = sprite.spriteX + sprite.spriteW / 2;
+  float spriteTop = sprite.spriteY - sprite.spriteH / 2;
+  float spriteBottom = sprite.spriteY + sprite.spriteH / 2;
+  return (playerRight > spriteLeft && playerLeft < spriteRight && playerBottom > spriteTop && playerTop < spriteBottom);
 }
 boolean hoverCheck(Button button) {
   float left = button.btnX - button.currentW / 2;

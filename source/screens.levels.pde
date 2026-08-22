@@ -22,45 +22,46 @@ void level(LevelClearArea levelNClearArea, ArrayList<Sprite> levelNSprites, Arra
         }
       }
     }
-    if (level.startsWith("level")) {
-      if (!levelClears.get(int(level.substring(5)) - 1) && !levelDeaths.get(int(level.substring(5)) - 1)) {
-        if (movingLeft) {
-          playerX -= xSpeed;
-        }
-        if (movingRight) {
-          playerX += xSpeed;
-        }
-        ySpeed += gravity;
-        playerY += ySpeed;
-        if (playerY >= bottom) {
-          playerY = bottom;
-          ySpeed = 0;
-          onGround = true;
-        } else {
-          onGround = false;
-        }
-        if (playerX > right) {
-          playerX = right;
-        }
-        if (playerX < halfBlockSize) {
-          playerX = halfBlockSize;
-        }
+    if (!levelClears.get(int(level.substring(5)) - 1) && !levelDeaths.get(int(level.substring(5)) - 1)) {
+      prevX = playerX;
+      prevY = playerY;
+      if (movingLeft) {
+        playerX -= xSpeed;
+      }
+      if (movingRight) {
+        playerX += xSpeed;
+      }
+      ySpeed += gravity;
+      playerY += ySpeed;
+      if (playerY >= bottom) {
+        playerY = bottom;
+        ySpeed = 0;
+        onGround = true;
+      } else {
+        onGround = false;
+      }
+      if (playerY < halfBlockSize) {
+        playerY = halfBlockSize;
+        ySpeed = 0;
+      }
+      if (playerX > right) {
+        playerX = right;
+      }
+      if (playerX < halfBlockSize) {
+        playerX = halfBlockSize;
       }
     }
     if (levelNPlatforms != null) {
       for (Platform plat : levelNPlatforms) {
         if (collisionCheck(plat)) {
-          float overlapX = (halfBlockSize + plat.spriteW / 2) - abs(playerX - plat.spriteX);
-          float overlapY = (halfBlockSize + plat.spriteH / 2) - abs(playerY - plat.spriteY);
-          if (overlapX < overlapY) {
-            if (playerX < plat.spriteX) {
-              playerX = plat.spriteX - plat.spriteW / 2 - halfBlockSize;
-            } else {
-              playerX = plat.spriteX + plat.spriteW / 2 + halfBlockSize;
-            }
-            xSpeed = 0;
+          boolean wasLeft  = (prevX + halfBlockSize <= plat.spriteX - plat.spriteW / 2);
+          boolean wasRight = (prevX - halfBlockSize >= plat.spriteX + plat.spriteW / 2);
+          if (wasLeft) {
+            playerX = plat.spriteX - plat.spriteW / 2 - halfBlockSize;
+          } else if (wasRight) {
+            playerX = plat.spriteX + plat.spriteW / 2 + halfBlockSize;
           } else {
-            if (playerY < plat.spriteY) {
+            if (prevY < plat.spriteY) {
               playerY = plat.spriteY - plat.spriteH / 2 - halfBlockSize;
               onGround = true;
             } else {

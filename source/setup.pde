@@ -165,6 +165,8 @@ void setup() {
   subtitleHeight = centreY + blockSize * 3.125;
   playerX = halfBlockSize;
   playerY = bottom;
+  prevX = playerX;
+  prevY = playerY;
   xSpeed = blockSize / 4;
   ySpeed = 0;
   gravity = blockSize / 40;
@@ -268,9 +270,9 @@ void setup() {
   levelClearCheckbox = new Checkbox(centreX, centreY, blockSize * 2.5, blockSize * 2.5, "checked");
   playerDeathCheckbox = new Checkbox(centreX, centreY + blockSize * 3.15, blockSize * 2.5, blockSize * 2.5, "checked");
   platformExample = new Platform(centreX, titleHeight, blockSize * 5, blockSize);
-  level3Platform1 = new Platform(right - blockSize * 2.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
+  level3Platform1 = new Platform(right - blockSize * 2.0, bottom - blockSize * 3.5, blockSize * 5, blockSize * 10);
   level4Platform1 = new Platform(right - blockSize * 7.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
-  level4Platform2 = new Platform(right - blockSize * 2.5, bottom - blockSize * 7.0, blockSize * 5, blockSize);
+  level4Platform2 = new Platform(right - blockSize * 2.0, bottom - blockSize * 7.0, blockSize * 5, blockSize);
   level5Platform1 = new Platform(right - blockSize * 62.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
   level5Platform2 = new Platform(right - blockSize * 57.5, bottom - blockSize * 7.0, blockSize * 5, blockSize);
   level5Platform3 = new Platform(right - blockSize * 52.5, bottom - blockSize * 10.5, blockSize * 5, blockSize);
@@ -283,7 +285,7 @@ void setup() {
   level5Platform10 = new Platform(right - blockSize * 17.5, bottom - blockSize * 35.0, blockSize * 5, blockSize);
   level5Platform11 = new Platform(right - blockSize * 12.5, bottom - blockSize * 38.5, blockSize * 5, blockSize);
   level5Platform12 = new Platform(right - blockSize * 7.5, bottom - blockSize * 42.0, blockSize * 5, blockSize);
-  level5Platform13 = new Platform(right - blockSize * 2.5, bottom - blockSize * 45.5, blockSize * 5, blockSize);
+  level5Platform13 = new Platform(right - blockSize * 2.0, bottom - blockSize * 45.5, blockSize * 5, blockSize);
   level6Platform1 = new Platform(right - blockSize * 11.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
   level7Platform1 = new Platform(right - blockSize * 16.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
   level7Platform2 = new Platform(right - blockSize * 11.5, bottom - blockSize * 7.0, blockSize * 5, blockSize);
@@ -409,7 +411,7 @@ void setup() {
   level25Platform12 = new Platform(centreX, bottom - blockSize * 42.0, blockSize, blockSize);
   level25Platform13 = new Platform(centreX, bottom - blockSize * 45.5, blockSize, blockSize);
   level30Platform1 = new Platform(right - blockSize * 7.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
-  level30Platform2 = new Platform(right - blockSize * 2.5, bottom - blockSize * 7.0, blockSize * 5, blockSize);
+  level30Platform2 = new Platform(right - blockSize * 2.0, bottom - blockSize * 7.0, blockSize * 5, blockSize);
   level31Platform1 = new Platform(right - blockSize * 62.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
   level31Platform2 = new Platform(right - blockSize * 57.5, bottom - blockSize * 7.0, blockSize * 5, blockSize);
   level31Platform3 = new Platform(right - blockSize * 52.5, bottom - blockSize * 10.5, blockSize * 5, blockSize);
@@ -422,7 +424,7 @@ void setup() {
   level31Platform10 = new Platform(right - blockSize * 17.5, bottom - blockSize * 35.0, blockSize * 5, blockSize);
   level31Platform11 = new Platform(right - blockSize * 12.5, bottom - blockSize * 38.5, blockSize * 5, blockSize);
   level31Platform12 = new Platform(right - blockSize * 7.5, bottom - blockSize * 42.0, blockSize * 5, blockSize);
-  level31Platform13 = new Platform(right - blockSize * 2.5, bottom - blockSize * 45.5, blockSize * 5, blockSize);
+  level31Platform13 = new Platform(right - blockSize * 2.0, bottom - blockSize * 45.5, blockSize * 5, blockSize);
   level32Platform1 = new Platform(right - blockSize * 11.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
   level33Platform1 = new Platform(right - blockSize * 16.5, bottom - blockSize * 3.5, blockSize * 5, blockSize);
   level33Platform2 = new Platform(right - blockSize * 11.5, bottom - blockSize * 7.0, blockSize * 5, blockSize);
@@ -1617,6 +1619,7 @@ void setup() {
   backdrop();
   fullScreen();
   pixelDensity(2);
+  frameRate(60);
   textAlign(CENTER);
   rectMode(CENTER);
   ellipseMode(CENTER);

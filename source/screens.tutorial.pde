@@ -1,5 +1,4 @@
 void tutorial() {
-  boolean playerSet = false;
   fade(1);
   if (targetLevel == "buffer") {
     targetLevel = "tutorial";
@@ -9,10 +8,6 @@ void tutorial() {
   push();
   rectMode(CORNER);
   textAlign(CENTER, TOP);
-  if (!playerSet) {
-    playerX = centreX;
-    playerY = titleHeight;
-  }
   if (!tutorial1Shown) {
     text("This is the player, your in-game representation. You can use WASD, arrow keys or the spacebar to move.", 0, subtitleHeight, wrapWidth, wrapHeight);
     if (fadeComplete) {

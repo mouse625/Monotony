@@ -47,7 +47,7 @@ class Button extends Sprite {
   String prevState = "default";
   String state = "default";
   boolean btnL;
-  boolean sectionUpdated;
+  boolean sectionUpdated = false;
   Button(float x, float y, float w, float h, String t, float s, boolean l) {
     this(x, y, w, h, blockSize * 0.45, t, s, l);
   }
@@ -176,9 +176,9 @@ class Button extends Sprite {
       updateNextSection();
       this.btnRow = int(nextSection.x);
       this.btnCol = int(nextSection.y);
+      displayImg = sections[this.btnRow][this.btnCol].get();
+      displayImg.resize(int(this.currentW), int(this.currentH));
     }
-    displayImg = sections[this.btnRow][this.btnCol].copy();
-    displayImg.resize(int(this.currentW), int(this.currentH));
     tint(255, alpha);
     image(displayImg, this.btnX, this.btnY);
     noFill();
