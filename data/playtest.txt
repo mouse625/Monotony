@@ -1,47 +1,52 @@
-settings:
-theme:
-tutorial:
-levelSelect:
-graphics:
+intro: working
+settings: working
+theme: working
+tutorial: working
+levelSelect: 
+graphics: working
 end:
-audio:
-achievements:
-about:
-level2:
-level3:
-level4:
-level5:
-level6:
-level7:
-level8:
-level9:
-level10:
-level11:
-level12:
-level13:
-level14:
-level15:
-level16:
-level17:
-level18:
-level19:
-level20:
-level21:
-level22:
-level23:
-level24:
-level25:
-level26:
-level27:
-level28:
-level29:
-level30:
-level31:
-level32:
-level33:
-level34:
-level35:
-level36:
+audio: working
+achievements: working
+about: working
+menu: working
+level1: working
+level2: working
+level3: working
+level4: working
+level5: working
+level6: working
+level7: working
+level8: working
+level9: working
+level10: working
+level11: working
+level12: working
+level13: working
+level14: working
+level15: working
+level16: working
+level17: working
+level18: working
+level19: working
+level20: working
+level21: working
+level22: working
+level23: working
+level24: working
+level25: working
+level26: working
+level27: working
+level28: working
+- deaths: no
+- deaths levelname: no 
+level29: working
+level30: working
+level31: working
+level32: working
+level33: working
+level34: working
+level35: working
+level36: working
 level37:
 level38:
 level39:

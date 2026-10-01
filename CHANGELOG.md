@@ -1,5 +1,53 @@
 # Changelog
 
+## v2.1.2
+
+### Updated
+
+- The CHANGELOG.md file (this one)
+- Cleaner fade function (no harcoded bias of levels versus screens)
+- More comprehensive level function (due to the cleaner fade function)
+- Removal of the unnecessary level title function
+
+### Fixed
+
+- Text alignment on the about screen
+- Removal of redundant statements in the level function
+- Fixed integer truncation bugs when initialising the mountains
+- Cleaned up redundant trailing zeroes
+- Bugs in various levels as a result of a full playtest
+    - Level 4
+        - Alignment of the platforms
+    - Level 5
+        - Alignment of the platforms
+    - Level 13
+        - Alignment of the platforms
+    - Level 14
+        - Alignment of the platforms
+    - Level 28
+        - Uneven spacing of the death platforms
+    - Level 30
+        - Alignment of the platforms
+        - Position of the death platform
+        - Static size of the death platform
+    - Level 31
+        - Alignment of the platforms
+        - Position of the death platform
+        - A platform's x-coordinate being y-anchored
+    - Level 32
+        - Position of the death platform
+    - Level 33
+        - Position of the death platform
+    - Level 34
+        - Position of the death platform
+    - Level 35
+        - Alignment of the platforms
+        - Position of the death platform
+    - Level 36
+        - Alignment of the platforms
+        - Position of the death platform
+- Fixed toggling of the levelNameShown boolean (due to the cleaner fade function)
+
 ## v2.1.1
 
 ### Updated
@@ -62,7 +110,7 @@
 - Fixed the achievements having overlapping coordinates
 - Fixed various other typos in the coordinates of a multitude of sprites
 - Fixed the malfunctioning exit button
-- Restructured the code and optimised several 
+- Restructured the code and optimised several sections
     - Matched the declaration-initialisation order
     - Automation of using the next section
     - Improved the structure of several classes to prevent bugs caused by future restructurings
