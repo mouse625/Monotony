@@ -1,6 +1,6 @@
 String getParentPath(int gen) {
   int remainingGen = gen;
-  File sketchDir = new File(sketchPath());
+  File sketchDir = new File(sketchPath(""));
   while (remainingGen > 0) {
     sketchDir = sketchDir.getParentFile();
     remainingGen--;
@@ -116,6 +116,11 @@ void setColours(boolean initialised) {
       mountain2.rangeColor = mountain2Colour;
       mountain3.rangeColor = mountain3Colour;
       mountain4.rangeColor = mountain4Colour;
+      for (int row = 0; row < 5; row++) {
+        for (int col = 0; col < 8; col++) {
+          sections[row][col] = loadImage(getParentPath(1) + "data/images/sections/" + theme + File.separator + theme + "Section[" + row + "][" + col + "].png");
+        }
+      }
     }
     previousTheme = theme;
   }
@@ -127,7 +132,7 @@ int getLevel(String levelString) {
     switch(levelString) {
       case "intro":
         return 1;
-      case "menu":
+      case "mainMenu":
         return 2;
       case "levelSelect":
         return 3;
@@ -135,7 +140,7 @@ int getLevel(String levelString) {
         return 4;
       case "tutorial":
         return 5;
-      case "settings":
+      case "settingsMenu":
         return 6;
       case "themeSettings":
         return 7;
@@ -143,7 +148,7 @@ int getLevel(String levelString) {
         return 8;
       case "audioSettings":
         return 9;
-      case "about":
+      case "aboutScreen":
         return 10;
       case "outro":
         return 11;
@@ -163,4 +168,269 @@ void updateNextSection() {
     }
   }
   nextSection.set(-1, -1);
+}
+void levelA(LevelClearArea levelNClearArea, ArrayList<Sprite> levelNSprites) {
+  levelTitle();
+  if(levelNameShown) {
+    fade(5);
+    if (collisionCheck(levelNClearArea) && !levelClears.get(int(level.substring(5)) - 1)) {
+      if (int(level.substring(5)) < levelClears.size()) {
+        targetLevel = "level" + (int(level.substring(5)) + 1);
+      } else {
+        targetLevel = "outro";
+        levelsButton.btnL = false;
+      }
+      levelClears.set(int(level.substring(5)) - 1, true);
+      if (levelClearCheckbox.getState() == "checked") {
+        levelClear.play();
+      }
+    }
+    if (level.startsWith("level")) {
+      if (!levelClears.get(int(level.substring(5)) - 1)) {
+        if (movingLeft) {
+          playerX -= xSpeed;
+        }
+        if (movingRight) {
+          playerX += xSpeed;
+        }
+        ySpeed += gravity;
+        playerY += ySpeed;
+        if (playerY >= bottom) {
+          playerY = bottom;
+          ySpeed = 0;
+          onGround = true;
+        } else {
+          onGround = false;
+        }
+        if (playerX > right) {
+          playerX = right;
+        }
+        if (playerX < halfBlockSize) {
+          playerX = halfBlockSize;
+        }
+      }
+    }
+    for (Sprite sprite : levelNSprites) {
+      sprite.display();
+    }
+  }
+}
+void levelB(LevelClearArea levelNClearArea, ArrayList<Sprite> levelNSprites, ArrayList<Platform> levelNPlatforms) {
+  levelTitle();
+  if(levelNameShown) {
+    fade(5);
+    if (collisionCheck(levelNClearArea) && !levelClears.get(int(level.substring(5)) - 1)) {
+      if (int(level.substring(5)) < levelClears.size()) {
+        targetLevel = "level" + (int(level.substring(5)) + 1);
+      } else {
+        targetLevel = "outro";
+        levelsButton.btnL = false;
+      }
+      levelClears.set(int(level.substring(5)) - 1, true);
+      if (levelClearCheckbox.getState() == "checked") {
+        levelClear.play();
+      }
+    }
+    if (level.startsWith("level")) {
+      if (!levelClears.get(int(level.substring(5)) - 1)) {
+        if (movingLeft) {
+          playerX -= xSpeed;
+        }
+        if (movingRight) {
+          playerX += xSpeed;
+        }
+        ySpeed += gravity;
+        playerY += ySpeed;
+        if (playerY >= bottom) {
+          playerY = bottom;
+          ySpeed = 0;
+          onGround = true;
+        } else {
+          onGround = false;
+        }
+        if (playerX > right) {
+          playerX = right;
+        }
+        if (playerX < halfBlockSize) {
+          playerX = halfBlockSize;
+        }
+      }
+    }
+    for (Platform plat : levelNPlatforms) {
+      if (collisionCheck(plat)) {
+        float overlapX = (halfBlockSize + plat.spriteW / 2) - abs(playerX - plat.spriteX);
+        float overlapY = (halfBlockSize + plat.spriteH / 2) - abs(playerY - plat.spriteY);
+        if (overlapX < overlapY) {
+          if (playerX < plat.spriteX) {
+            playerX = plat.spriteX - plat.spriteW / 2 - halfBlockSize;
+          } else {
+            playerX = plat.spriteX + plat.spriteW / 2 + halfBlockSize;
+          }
+          xSpeed = 0;
+        } else {
+          if (playerY < plat.spriteY) {
+            playerY = plat.spriteY - plat.spriteH / 2 - halfBlockSize;
+            onGround = true;
+          } else {
+            playerY = plat.spriteY + plat.spriteH / 2 + halfBlockSize;
+          }
+          ySpeed = 0;
+        }
+      }
+      for (Sprite sprite : levelNSprites) {
+        sprite.display();
+      }
+    }
+  }
+}
+void levelC(LevelClearArea levelNClearArea, ArrayList<Sprite> levelNSprites, ArrayList<DeathPlatform> levelNDeathPlatforms) {
+  levelTitle();
+  if(levelNameShown) {
+    fade(5);
+    if (collisionCheck(levelNClearArea) && !levelClears.get(int(level.substring(5)) - 1)) {
+      if (int(level.substring(5)) < levelClears.size()) {
+        targetLevel = "level" + (int(level.substring(5)) + 1);
+      } else {
+        targetLevel = "outro";
+        levelsButton.btnL = false;
+      }
+      levelClears.set(int(level.substring(5)) - 1, true);
+      if (levelClearCheckbox.getState() == "checked") {
+        levelClear.play();
+      }
+    }
+    if (level.startsWith("level")) {
+      if (levelDeaths.get(int(level.substring(5)) - 1) && alpha <= 0) {
+        levelDeaths.set(int(level.substring(5)) - 1, false);
+        for (int levelClear = 0; levelClear < levelClears.size(); levelClear++) {
+          levelClears.set(levelClear, false);
+        }
+      }
+    }
+    if (level.startsWith("level")) {
+      if (!levelClears.get(int(level.substring(5)) - 1) && !levelDeaths.get(int(level.substring(5)) - 1)) {
+        if (movingLeft) {
+          playerX -= xSpeed;
+        }
+        if (movingRight) {
+          playerX += xSpeed;
+        }
+        ySpeed += gravity;
+        playerY += ySpeed;
+        if (playerY >= bottom) {
+          playerY = bottom;
+          ySpeed = 0;
+          onGround = true;
+        } else {
+          onGround = false;
+        }
+        if (playerX > right) {
+          playerX = right;
+        }
+        if (playerX < halfBlockSize) {
+          playerX = halfBlockSize;
+        }
+      }
+    }
+    for (DeathPlatform deathPlat : levelNDeathPlatforms) {
+      if (collisionCheck(deathPlat) && !levelDeaths.get(int(level.substring(5)) - 1)) {
+        levelDeaths.set(int(level.substring(5)) - 1, true);
+        if (playerDeathCheckbox.getState() == "checked") {
+          playerDeath.play();
+        }
+        targetLevel = "level1";
+      }
+    }
+    for (Sprite sprite : levelNSprites) {
+      sprite.display();
+    }
+  }
+}
+void levelD(LevelClearArea levelNClearArea, ArrayList<Sprite> levelNSprites, ArrayList<Platform> levelNPlatforms, ArrayList<DeathPlatform> levelNDeathPlatforms) {
+  levelTitle();
+  if(levelNameShown) {
+    fade(5);
+    if (collisionCheck(levelNClearArea) && !levelClears.get(int(level.substring(5)) - 1)) {
+      if (int(level.substring(5)) < levelClears.size()) {
+        targetLevel = "level" + (int(level.substring(5)) + 1);
+      } else {
+        targetLevel = "outro";
+        levelsButton.btnL = false;
+      }
+      levelClears.set(int(level.substring(5)) - 1, true);
+      if (levelClearCheckbox.getState() == "checked") {
+        levelClear.play();
+      }
+    }
+    if (level.startsWith("level")) {
+      if (levelDeaths.get(int(level.substring(5)) - 1) && alpha <= 0) {
+        levelDeaths.set(int(level.substring(5)) - 1, false);
+        for (int levelClear = 0; levelClear < levelClears.size(); levelClear++) {
+          levelClears.set(levelClear, false);
+        }
+      }
+    }
+    if (level.startsWith("level")) {
+      if (!levelClears.get(int(level.substring(5)) - 1) && !levelDeaths.get(int(level.substring(5)) - 1)) {
+        if (movingLeft) {
+          playerX -= xSpeed;
+        }
+        if (movingRight) {
+          playerX += xSpeed;
+        }
+        ySpeed += gravity;
+        playerY += ySpeed;
+        if (playerY >= bottom) {
+          playerY = bottom;
+          ySpeed = 0;
+          onGround = true;
+        } else {
+          onGround = false;
+        }
+        if (playerX > right) {
+          playerX = right;
+        }
+        if (playerX < halfBlockSize) {
+          playerX = halfBlockSize;
+        }
+      }
+    }
+    for (Platform plat : levelNPlatforms) {
+      if (collisionCheck(plat)) {
+        float overlapX = (halfBlockSize + plat.spriteW / 2) - abs(playerX - plat.spriteX);
+        float overlapY = (halfBlockSize + plat.spriteH / 2) - abs(playerY - plat.spriteY);
+        if (overlapX < overlapY) {
+          if (playerX < plat.spriteX) {
+            playerX = plat.spriteX - plat.spriteW / 2 - halfBlockSize;
+          } else {
+            playerX = plat.spriteX + plat.spriteW / 2 + halfBlockSize;
+          }
+          xSpeed = 0;
+        } else {
+          if (playerY < plat.spriteY) {
+            playerY = plat.spriteY - plat.spriteH / 2 - halfBlockSize;
+            onGround = true;
+          } else {
+            playerY = plat.spriteY + plat.spriteH / 2 + halfBlockSize;
+          }
+          ySpeed = 0;
+        }
+      }
+      for (Sprite sprite : levelNSprites) {
+        sprite.display();
+      }
+    }
+    for (DeathPlatform deathPlat : levelNDeathPlatforms) {
+      if (collisionCheck(deathPlat) && !levelDeaths.get(int(level.substring(5)) - 1)) {
+        levelDeaths.set(int(level.substring(5)) - 1, true);
+        if (playerDeathCheckbox.getState() == "checked") {
+          playerDeath.play();
+        }
+        targetLevel = "level1";
+      }
+    }
+    for (Sprite sprite : levelNSprites) {
+      sprite.display();
+    }
+  }
 }

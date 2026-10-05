@@ -1,91 +1,6 @@
 # Changelog
 
-## v2.1.2
-
-### Updated
-
-- The CHANGELOG.md file (this one)
-- Cleaner fade function (no harcoded bias of levels versus screens)
-- More comprehensive level function (due to the cleaner fade function)
-- Removal of the unnecessary level title function
-
-### Fixed
-
-- Text alignment on the about screen
-- Removal of redundant statements in the level function
-- Fixed integer truncation bugs when initialising the mountains
-- Cleaned up redundant trailing zeroes
-- Bugs in various levels as a result of a full playtest
-    - Level 4
-        - Alignment of the platforms
-    - Level 5
-        - Alignment of the platforms
-    - Level 13
-        - Alignment of the platforms
-    - Level 14
-        - Alignment of the platforms
-    - Level 28
-        - Uneven spacing of the death platforms
-    - Level 30
-        - Alignment of the platforms
-        - Position of the death platform
-        - Static size of the death platform
-    - Level 31
-        - Alignment of the platforms
-        - Position of the death platform
-        - A platform's x-coordinate being y-anchored
-    - Level 32
-        - Position of the death platform
-    - Level 33
-        - Position of the death platform
-    - Level 34
-        - Position of the death platform
-    - Level 35
-        - Alignment of the platforms
-        - Position of the death platform
-    - Level 36
-        - Alignment of the platforms
-        - Position of the death platform
-- Fixed toggling of the levelNameShown boolean (due to the cleaner fade function)
-
-## v2.1.1
-
-### Updated
-
-- The CHANGELOG.md file (this one)
-
-### Fixed
-
-- Fixed the disabling of horizontal movement when colliding with the side of a platform
-- Fixed the bug (present for a year) where colliding with the side of a platform would teleport you to the top
-- Fixed some redundancies in the achievements and button classes (unused sections)
-
-## v2.1.0
-
-### Added
-
-- Mass anchoring to various positional checkpoints to fully support various aspect ratios
-- Dynamic achievement positioning
-- More credits images (with the old ones being updated too) as part of Stardance
-
-### Updated
-
-- The CHANGELOG.md file (this one)
-- Improved cursor transitions between display states
-- Quadratic instead of linear lerping for easing during transitions
-- Removal of the back button (functionality replaced by the escape key)
-- Improved fade function for a greater range of transition speeds
-- Dyanmic title and subtitle heights for appropriate centring
-- Revamped how levels were drew in preparation of upcoming features (stopped exponential growth of the number of lines)
-- Updated the tutorial
-
-### Fixed
-
-- Button rendering bugs (didn't appear in previous versions but might as well have fixed the root cause)
-- Fixed how collisions with the sides of platforms functioned
-- Added consistency in structure, syntax and naming conventions
-
-## v2.0.0
+## v1.0.1
 
 ### Added
 
@@ -110,7 +25,7 @@
 - Fixed the achievements having overlapping coordinates
 - Fixed various other typos in the coordinates of a multitude of sprites
 - Fixed the malfunctioning exit button
-- Restructured the code and optimised several sections
+- Restructured the code and optimised several 
     - Matched the declaration-initialisation order
     - Automation of using the next section
     - Improved the structure of several classes to prevent bugs caused by future restructurings
@@ -120,5 +35,3 @@
 ### Added
 
 - Initial release
-
----

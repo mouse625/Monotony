@@ -1,4 +1,5 @@
 void tutorial() {
+  boolean playerSet = false;
   fade(1);
   if (targetLevel == "buffer") {
     targetLevel = "tutorial";
@@ -8,6 +9,10 @@ void tutorial() {
   push();
   rectMode(CORNER);
   textAlign(CENTER, TOP);
+  if (!playerSet) {
+    playerX = centreX;
+    playerY = blockSize * 30.75;
+  }
   if (!tutorial1Shown) {
     text("This is the player, your in-game representation. You can use WASD, arrow keys or the spacebar to move.", 0, subtitleHeight, wrapWidth, wrapHeight);
     if (fadeComplete) {
@@ -51,7 +56,7 @@ void tutorial() {
   } else {
     text("Good luck, but it's not gonna help you on your futile journey.", 0, subtitleHeight, wrapWidth, wrapHeight);
     if (time == 255) {
-      targetLevel = "menu";
+      targetLevel = "mainMenu";
     }
     if (fadeComplete) {
       tutorial1Shown = false;
@@ -61,7 +66,7 @@ void tutorial() {
     }
   }
   pop();
-  if (time == 255 && targetLevel != "menu") {
+  if (time == 255 && targetLevel != "mainMenu") {
     targetLevel = "buffer";
   }
 }

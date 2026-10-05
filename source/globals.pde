@@ -1,6 +1,5 @@
 int time;
 int alpha;
-int levelCount;
 int achRows;
 int achCols;
 PFont benchNineLight;
@@ -32,8 +31,6 @@ float subtitleSize;
 float subtitleHeight;
 float playerX;
 float playerY;
-float prevX;
-float prevY;
 float xSpeed;
 float ySpeed;
 float gravity;

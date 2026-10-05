@@ -22,7 +22,6 @@ class Achievement extends Sprite {
   String achTitle;
   String achSubtitle;
   boolean achL;
-  boolean sectionUpdated = false;
   Achievement(int row, int col, String t, String st, boolean l) {
     this(centreX + (col - (achCols + 1) / 2.0) * blockSize * 19.0, centreY + (row - (achRows + 1) / 2.0) * blockSize * 6.0, t, st, l);
   }
@@ -79,11 +78,8 @@ class Achievement extends Sprite {
     }
   }
   void displayLocked() {
-    if (!sectionUpdated) {
-      sectionUpdated = true;
-      displayImg = sections[this.achRow][this.achCol].get();
-      displayImg.resize(int(this.achW), int(this.achH));
-    }
+    displayImg = sections[this.achRow][this.achCol].copy();
+    displayImg.resize(int(this.achW), int(this.achH));
     tint(255, alpha);
     image(displayImg, this.achX, this.achY);
     noFill();

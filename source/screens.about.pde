@@ -1,53 +1,53 @@
-void about() {
+void aboutScreen() {
   fade(1);
   if (targetLevel == "buffer") {
-    targetLevel = "about";
+    targetLevel = "aboutScreen";
   }
   fill(playerColour, alpha);
   tint(playerColour, alpha);
   textFont(benchNineLight, subtitleSize);
   if (!about1Shown) {
-    text("This project was initiated by", centreX, centreY);
+    text("This project was initiated by", centreX, titleHeight);
     if (fadeComplete) {
       about1Shown = true;
     }
   } else if (!about2Shown) {
-    text("a computer science assessment", centreX, centreY);
+    text("a computer science assessment", centreX, titleHeight);
     if (fadeComplete) {
       about2Shown = true;
     }
   } else if (!about3Shown) {
-    text("and developed through", centreX, centreY);
+    text("and developed through", centreX, titleHeight);
     if (fadeComplete) {
       about3Shown = true;
     }
   } else if (!about4Shown) {
-    image(hackclub, centreX, centreY);
-    text("Hack Club", centreX, centreY);
+    image(hackclub, centreX, titleHeight);
+    text("Hack Club", centreX, titleHeight);
     if (fadeComplete) {
       about4Shown = true;
     }
   } else if (!about5Shown) {
-    text("in the events called", centreX, centreY);
+    text("in the events called", centreX, titleHeight);
     if (fadeComplete) {
       about5Shown = true;
     }
   } else if (!about6Shown) {
     image(summer, centreX, titleHeight);
-    text("Summer of Making", centreX, centreY);
+    text("Summer of Making", centreX, titleHeight);
     if (fadeComplete) {
       about6Shown = true;
     }
   } else if (!about7Shown) {
-    text("and", centreX, centreY);
+    text("and", centreX, titleHeight);
     if (fadeComplete) {
       about7Shown = true;
     }
   } else {
-    image(stardance, centreX, centreY);
-    text("Stardance", centreX, centreY);
+    image(stardance, centreX, titleHeight);
+    text("Stardance", centreX, titleHeight);
     if (time == 255) {
-      targetLevel = "settings";
+      targetLevel = "settingsMenu";
     }
     if (fadeComplete) {
       about1Shown = false;
@@ -59,7 +59,7 @@ void about() {
       about7Shown = false;
     }
   }
-  if (time == 255 && targetLevel != "settings") {
+  if (time == 255 && targetLevel != "settingsMenu") {
     targetLevel = "buffer";
   }
 }
