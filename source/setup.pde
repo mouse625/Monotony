@@ -177,7 +177,7 @@ void setup() {
   hackclub = loadImage(getParentPath(1) + "data/images/hackclub.png");
   summer = loadImage(getParentPath(1) + "data/images/summer.hackclub.png");
   stardance = loadImage(getParentPath(1) + "data/images/stardance.hackclub.png");
-  level = "level36";
+  level = "intro";
   targetLevel = level;
   previousTheme = "";
   theme = "default";
